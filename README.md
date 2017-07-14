@@ -13,7 +13,7 @@ Please refer to the paper for the details.
 Training
 -----------------------
 If you want to train your own model, please prepare a parallel linguistics corpus, like corpus in [WMT](http://www.statmt.org/wmt15/translation-task.html). A GPU with 12GB memory will be helpful. You could run `bash train.sh` or follow these steps.
- 1. Download the relative scripts (tokenizer.perl, multi-bleu.perl) and nonbreaking_prefix from [mose_git](https://raw.githubusercontent.com/moses-smt/mosesdecoder/master/scripts).
+ 1. Download the relative scripts (tokenizer.perl, multi-bleu.perl) and nonbreaking_prefix from [mose_git](https://github.com/moses-smt/mosesdecoder/tree/master/scripts).
  2. Download the datasets, then tokenize and shuffle the cropus.
  3. Create the character list for both language using `create_vocab.py` in `preprocess` folder. Don't forget to pass the language setting, vocabulary size and file name to this script.
  4. Create a `data` folder, and put the `vocab.*.*.pkl` and `*.shuf` in the `data` folder.
