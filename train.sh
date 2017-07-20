@@ -2,7 +2,7 @@
 
 # The repository of moses, we need to download some scripts from moses.
 # https://github.com/moses-smt/mosesdecoder/tree/master/scripts
-mose_git=https://raw.githubusercontent.com/moses-smt/mosesdecoder/master/scripts
+mose_git=https://github.com/moses-smt/mosesdecoder/tree/master/scripts
 
 echo 'Select the source language: en, cs, fi, fr, ru, de'
 read -p '==> ' source_language
