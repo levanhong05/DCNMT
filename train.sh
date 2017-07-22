@@ -13,15 +13,13 @@ echo 'Select the target language: en, cs, fi, fr, ru, de'
 read -p '==> ' target_language
 echo "The selected target language is $target_language"
 
-if [ $target_language = $source_language ]
-then
+if [ $target_language = $source_language ]; then
     echo 'Languages should be different'
     read -p ' ' aaa
     exit -1
 fi
 
-if [ ! -d 'share/nonbreaking_prefixes' ]
-then
+if [ ! -d share/nonbreaking_prefixes ]; then
     mkdir -p share/nonbreaking_prefixes 
 fi
 
@@ -30,8 +28,7 @@ curl -s $mose_git/share/nonbreaking_prefixes/nonbreaking_prefix.$source_language
 echo "Downloading nonbreaking_prefix $target_language ..."
 curl -s $mose_git/share/nonbreaking_prefixes/nonbreaking_prefix.$target_language > share/nonbreaking_prefixes/nonbreaking_prefix.$target_language
 
-if [ ! -d 'data' ]
-then
+if [ ! -d data ]; then
     echo 'Creating data directory...'
     mkdir data
 fi
@@ -42,13 +39,11 @@ cp preprocess/create_vocab.py preprocess/shuffle_data.py data/
 
 echo 'cd to data directory'
 cd data
-if [ ! -f tokenizer.perl ]
-then
+if [ ! -f tokenizer.perl ]; then
     echo 'Downloading tokenizer.perl'
     curl -s $mose_git/tokenizer/tokenizer.perl > tokenizer.perl
 fi
-if [ ! -f multi-bleu.perl ]
-then
+if [ ! -f multi-bleu.perl ]; then
     echo 'Downloading multi-bleu.perl'
     curl -s $mose_git/generic/multi-bleu.perl > multi-bleu.perl
 fi
@@ -75,7 +70,7 @@ tok_target_file=all.$source_language-$target_language.$target_language.tok
 perl tokenizer.perl -l $source_language -threads 4 -no-escape < $source_data > $tok_source_file
 perl tokenizer.perl -l $target_language -threads 4 -no-escape < $target_data > $tok_target_file
 
-echo 'Please put test dataset in the data directory'
+echo 'Please put the test dataset in the data directory'
 echo 'The file name of source test set:'
 read -p '==>' src_test
 echo 'The file name of targe test set:'
